@@ -96,6 +96,7 @@ import ast
 
 SILENT = True
 MYSQL_DIALECTS = ["mysql", "pymysql", "mysql+pymysql"]
+PASSWORD = os.environ['ADMIN_PASSWORD']
 
 app = create_app(config_name='production', silent=SILENT)
 manager = Manager(app)
@@ -200,8 +201,8 @@ def add(username, email=None, password=None):
     """
     db.create_all()
     if not password:
-        password = getpass()
-        password2 = getpass(prompt='Confirm: ')
+        password = PASSWORD # getpass()
+        password2 = PASSWORD # getpass(prompt='Confirm: ')
         if password != password2:
             import sys
             sys.exit('Error: passwords do not match.')
@@ -234,8 +235,8 @@ def change(username, email=None, password_prompt=False):
     Change the email address or the password of an existing administrator.
     """
     if password_prompt:
-        password = getpass()
-        password2 = getpass(prompt='Confirm: ')
+        password = PASSWORD # getpass()
+        password2 = PASSWORD # getpass(prompt='Confirm: ')
         if password != password2:
             import sys
             sys.exit('Error: passwords do not match.')
@@ -433,8 +434,8 @@ def encrypt_enckey(encfile):
     """
     # TODO we just print out a string here and assume, the user pipes it into a file.
     #      Maybe we should write the file here so we know what is in there
-    password = getpass()
-    password2 = getpass(prompt='Confirm: ')
+    password = PASSWORD # getpass()
+    password2 = PASSWORD # getpass(prompt='Confirm: ')
     if password != password2:
         import sys
         sys.exit('Error: passwords do not match.')

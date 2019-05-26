@@ -1,0 +1,25 @@
+version: '3.7'
+
+networks:
+  servers:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.50.0.0/16
+
+services:
+  server:
+    build:
+      dockerfile: Dockerfile
+      context: .
+      args:
+        ADMIN_LOGIN: evo
+        ADMIN_PASSWORD: evo_password
+    environment:
+      - ADMIN_PASSWORD=evo_password
+    ports:
+      - 5000:5000
+    networks:
+      servers:
+        ipv4_address: 10.50.1.1
+    command: "python3 ./pi-manage runserver -p 5000 -h 0.0.0.0"
