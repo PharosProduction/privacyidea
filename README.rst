@@ -176,3 +176,6 @@ from the user sources like SQL, LDAP, SCIM or flat files.
 Versioning
 ==========
 privacyIDEA adheres to `Semantic Versioning <http://semver.org/>`_.
+
+By [Dmytro Nasyrov, Founder, CTO at Pharos Production Inc.](https://www.linkedin.com/in/dmytronasyrov/)
+And [Pharos Production Inc. - Web3, blockchain, fintech, defi software development services](https://pharosproduction.com)
